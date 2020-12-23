@@ -1,0 +1,9 @@
+server:
+  port: 8082
+  servlet:
+    contextPath: /carPartsProject
+spring:
+  datasource:
+    password: password
+    url: jdbc:mysql://localhost:3306/carparts?user=root
+    driverClassName : com.mysql.cj.jdbc.Driver
