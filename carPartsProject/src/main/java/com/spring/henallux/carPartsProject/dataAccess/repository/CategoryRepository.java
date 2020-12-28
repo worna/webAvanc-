@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<CategoryEntity,String>{
     CategoryEntity findByCategoryId(Integer id);
-    List<CategoryEntity> findAll();
+    List<CategoryEntity> findByOrderByName();
 }
 

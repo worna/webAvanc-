@@ -3,6 +3,10 @@ package com.spring.henallux.carPartsProject.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
 import static org.springframework.util.StringUtils.isEmpty;
 
 import java.sql.Date;
@@ -11,7 +15,10 @@ import java.util.Collection;
 import java.util.List;
 
 public class User implements UserDetails {
+    @NotNull
+    @Email
     private String email;
+    @NotNull
     private String password;
     private String lastName;
     private String firstName;
@@ -74,6 +81,10 @@ public class User implements UserDetails {
 
     public int getGender() {
         return gender;
+    }
+
+    public String getAuthoritiesString() {
+        return authorities;
     }
 
     @Override

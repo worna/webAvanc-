@@ -5,5 +5,5 @@ server:
 spring:
   datasource:
     password: password
-    url: jdbc:mysql://localhost:3306/carparts?user=root
+    url: jdbc:mysql://localhost:3306/carparts?user=web_user
     driverClassName : com.mysql.cj.jdbc.Driver

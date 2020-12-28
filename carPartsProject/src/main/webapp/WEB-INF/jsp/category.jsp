@@ -7,7 +7,7 @@
         <c:forEach items="${Products}" var="product">
             <a class="preview_link" href="<spring:url value="/product/${product.id}"/>">
                 <div class="preview" >
-                    <h3>${product.name}</h3>
+                    <h3>${product.brand} - ${product.name}</h3>
                     <div class="preview_image_container">
                         <img class="preview_image" src="<spring:url value="/images/products/${product.image}"/>" />
                     </div>

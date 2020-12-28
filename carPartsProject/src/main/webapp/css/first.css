@@ -186,3 +186,78 @@ h3{
     text-align: right;
     color: red;
 }
+
+
+.authentication{
+    background-color: #fff9ed;
+    height: 55%;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 5%;
+}
+
+.authentication > form > button{
+    background-color: #121212;
+    color:white;
+    border-radius: 5%;
+    padding: 1%;
+    width: 25%;
+    border: none;
+}
+.authentication > form > button:hover{
+    background-color: #ec8405;
+    cursor: pointer;
+}
+
+.inputContainer > input {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 0.15vw solid #121212;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #121212;
+    padding: 0.5vw 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.inputContainer > input::placeholder {
+     color: transparent;
+ }
+
+.inputContainer > input:placeholder-shown ~ .label {
+     font-size: 1vw;
+     cursor: text;
+     top: 2vw;
+ }
+.inputContainer {
+    position: relative;
+    padding: 1vw 0 0;
+}
+.label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1vw;
+    color: #121212;
+}
+
+.inputContainer > input:focus + .label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #ec8405;
+    font-weight:700;
+}
+.inputContainer > input:focus {
+
+    padding-bottom: 1vw;
+    font-weight: 700;
+    border-bottom: 0.15vw solid #ec8405;
+}

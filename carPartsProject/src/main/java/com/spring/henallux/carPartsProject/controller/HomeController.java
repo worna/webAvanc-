@@ -27,7 +27,7 @@ public class HomeController {
 
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model){
-        List<Category> result = categoryDAO.findAll();
+        List<Category> result = categoryDAO.findByOrderByName();
         model.addAttribute("Categories", result);
         model.addAttribute("title","Car parts");
         return "integrated:home";

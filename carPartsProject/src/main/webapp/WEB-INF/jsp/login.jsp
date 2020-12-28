@@ -7,26 +7,33 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="include/importTags.jsp"%>
-
-<form:form id="userLogin"
-           method="POST"
-           modelAttribute="userDetails">
-    <form:label path="email">
-        <spring:message code="email"/>
-    </form:label>
-    <form:input path="email"/>
-    <form:errors path="email"/>
-
-    <form:label path="password">
-        <spring:message code="password"/>
-    </form:label>
-    <form:password path="password"/>
-    <form:errors path="password"/>
-
-    <form:button>
-        <spring:message code="sendButton"/>
-    </form:button>
-</form:form>
-<a href="<spring:url value="/register"/>"><spring:message code="register"/></a>
+<div class="authentication">
+    <form:form id="userLogin"
+               method="POST"
+               modelAttribute="userDetails">
+        <div class="inputContainer">
+            <spring:message code="email" var="emailPlaceholder"/>
+            <form:input type="email" path="email" placeholder='${emailPlaceholder}' />
+            <form:label path="email" class="label">
+                <spring:message code="email"/>
+            </form:label>
+            <form:errors path="email"/>
+        </div>
+        <br/>
+        <div class="inputContainer">
+            <spring:message code="password" var="passwordPlaceholder"/>
+            <form:password path="password" placeholder='${passwordPlaceholder}'/>
+            <form:label path="password" class="label">
+                <spring:message code="password"/>
+            </form:label>
+            <form:errors path="password"/>
+        </div>
+        <br/>
+        <form:button >
+            <spring:message code="login"/>
+        </form:button>
+    </form:form>
+    <a href="<spring:url value="/register"/>"><spring:message code="register"/></a>
+</div>
 
 

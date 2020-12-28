@@ -5,4 +5,5 @@ import com.spring.henallux.carPartsProject.model.User;
 
 public interface UserDataAccess {
     User findByEmail (String email);
+    void addUser(User user);
 }

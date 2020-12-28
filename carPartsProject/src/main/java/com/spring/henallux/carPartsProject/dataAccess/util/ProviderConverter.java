@@ -32,6 +32,22 @@ public class ProviderConverter {
         user.setAuthorities(userEntity.getAuthorities());
         return user;
     }
+    public UserEntity userModelToUserEntity(User user){
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail(user.getEmail());
+        userEntity.setPassword(user.getPassword());
+        userEntity.setLastName(user.getLastName());
+        userEntity.setFirstName(user.getFirstName());
+        userEntity.setPhoneNumber(user.getPhoneNumber());
+        userEntity.setBirthDate(user.getBirthDate());
+        userEntity.setGender(user.getGender());
+        userEntity.setAccountNonExpired(user.isAccountNonExpired());
+        userEntity.setAccountNonLocked(user.isAccountNonLocked());
+        userEntity.setCredentialsNonExpired(user.isCredentialsNonExpired());
+        userEntity.setEnabled(user.isEnabled());
+        userEntity.setAuthorities(user.getAuthoritiesString());
+        return userEntity;
+    }
     public Product productEntityToProductModel(ProductEntity productEntity){
         Product product = mapper.map(productEntity, Product.class);
         product.setCategory(categoryEntityToCategoryModel(productEntity.getCategoryEntity()));
