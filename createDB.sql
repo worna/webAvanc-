@@ -1,6 +1,7 @@
 CREATE DATABASE  IF NOT EXISTS `carparts` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `carparts`;
 
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -21,7 +22,6 @@ DROP TABLE IF EXISTS `category`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
   `category_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
   `image` varchar(50) NOT NULL DEFAULT 'no_image.jpg',
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
@@ -33,8 +33,35 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Courroies','courroie.jpg'),(2,'Rotules','rotule.jpg'),(3,'Filtres','no_image.jpg'),(4,'Suspensions','suspension.jpg'),(5,'Transmissions','no_image.jpg'),(6,'Disques de frein','no_image.jpg'),(7,'Plaquettes de frein','no_image.jpg'),(8,'Batteries','no_image.jpg'),(9,'Ampoules','no_image.jpg');
+INSERT INTO `category` VALUES (1,'courroie.jpg'),(2,'rotule.jpg'),(3,'no_image.jpg'),(4,'suspension.jpg'),(5,'no_image.jpg'),(6,'no_image.jpg'),(7,'no_image.jpg'),(8,'no_image.jpg'),(9,'no_image.jpg');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category_transalation`
+--
+
+DROP TABLE IF EXISTS `category_transalation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `category_transalation` (
+  `name` varchar(255) NOT NULL,
+  `languageName` varchar(255) NOT NULL,
+  `categoryId` int NOT NULL,
+  PRIMARY KEY (`languageName`,`categoryId`),
+  KEY `FK_category_idx` (`categoryId`),
+  CONSTRAINT `FK_category` FOREIGN KEY (`categoryId`) REFERENCES `category` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category_transalation`
+--
+
+LOCK TABLES `category_transalation` WRITE;
+/*!40000 ALTER TABLE `category_transalation` DISABLE KEYS */;
+INSERT INTO `category_transalation` VALUES ('Belt','en',1),('Steering knuckle ','en',2),('Filter','en',3),('Suspension','en',4),('Courroie','fr',1),('Rotule','fr',2),('Filtre','fr',3),('Suspension','fr',4);
+/*!40000 ALTER TABLE `category_transalation` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -113,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
+-- Dump completed on 2020-12-28 14:19:48
