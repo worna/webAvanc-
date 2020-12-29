@@ -1,10 +1,10 @@
-package com.spring.henallux.carPartsProject;
+package com.spring.henallux.CarPartsShop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FirstSpringProjectApplicationTests {
+class CarPartsShopApplicationTests {
 
 	@Test
 	void contextLoads() {
