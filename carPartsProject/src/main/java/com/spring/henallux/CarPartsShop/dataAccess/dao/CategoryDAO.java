@@ -1,9 +1,9 @@
-package com.spring.henallux.carPartsProject.dataAccess.dao;
+package com.spring.henallux.CarPartsShop.dataAccess.dao;
 
-import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryEntity;
-import com.spring.henallux.carPartsProject.dataAccess.repository.CategoryRepository;
-import com.spring.henallux.carPartsProject.dataAccess.util.ProviderConverter;
-import com.spring.henallux.carPartsProject.model.Category;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.repository.CategoryRepository;
+import com.spring.henallux.CarPartsShop.dataAccess.util.ProviderConverter;
+import com.spring.henallux.CarPartsShop.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

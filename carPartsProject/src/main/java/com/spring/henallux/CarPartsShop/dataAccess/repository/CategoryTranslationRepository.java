@@ -1,7 +1,7 @@
-package com.spring.henallux.carPartsProject.dataAccess.repository;
+package com.spring.henallux.CarPartsShop.dataAccess.repository;
 
-import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryEntity;
-import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryTranslationEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryTranslationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

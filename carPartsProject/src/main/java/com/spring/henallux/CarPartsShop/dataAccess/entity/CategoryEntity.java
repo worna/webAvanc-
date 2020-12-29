@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject.dataAccess.entity;
+package com.spring.henallux.CarPartsShop.dataAccess.entity;
 
 import javax.persistence.*;
 

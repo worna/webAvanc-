@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject.dataAccess.entity;
+package com.spring.henallux.CarPartsShop.dataAccess.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -39,7 +39,7 @@ public class UserEntity {
     private java.sql.Date birthDate;
 
     @Column(name = "gender")
-    private int gender;
+    private Integer gender;
 
     @Column(name = "AUTHORITIES")
     private String authorities;
@@ -140,11 +140,11 @@ public class UserEntity {
         this.birthDate = birthDate;
     }
 
-    public int getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 

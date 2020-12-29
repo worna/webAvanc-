@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject.model;
+package com.spring.henallux.CarPartsShop.model;
 
 public class Image {
     private int id;

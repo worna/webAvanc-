@@ -1,6 +1,6 @@
-package com.spring.henallux.carPartsProject.dataAccess.entity;
+package com.spring.henallux.CarPartsShop.dataAccess.entity;
 
-import com.spring.henallux.carPartsProject.model.Category;
+import com.spring.henallux.CarPartsShop.model.Category;
 
 import javax.persistence.*;
 import java.sql.Date;

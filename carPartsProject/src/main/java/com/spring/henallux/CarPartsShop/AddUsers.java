@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject;
+package com.spring.henallux.CarPartsShop;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

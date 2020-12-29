@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject.configuration;
+package com.spring.henallux.CarPartsShop.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

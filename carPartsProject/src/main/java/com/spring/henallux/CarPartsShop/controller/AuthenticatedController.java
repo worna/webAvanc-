@@ -1,6 +1,6 @@
-package com.spring.henallux.carPartsProject.controller;
+package com.spring.henallux.CarPartsShop.controller;
 
-import com.spring.henallux.carPartsProject.model.User;
+import com.spring.henallux.CarPartsShop.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

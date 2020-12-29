@@ -15,7 +15,7 @@
 <div class="authentication">
     <form:form id="userRegister"
                method="POST"
-               action="/carPartsProject/register/send"
+               action="/CarPartsShop/register/send"
                modelAttribute="userForm">
         <div class="inputContainer">
             <spring:message code="firstName" var="firstNamePlaceholder"/>
@@ -113,9 +113,9 @@
         <spring:message var="male" code="male"/>
         <spring:message var="female" code="female"/>
         <spring:message var="other" code="other"/>
-        <form:radiobutton path="gender" value="0" label="${male}"/>
-        <form:radiobutton path="gender" value="1" label="${female}"/>
-        <form:radiobutton path="gender" value="2" label="${other}"/>
+        <form:radiobutton path="gender" value="1" label="${male}"/>
+        <form:radiobutton path="gender" value="2" label="${female}"/>
+        <form:radiobutton path="gender" value="3" label="${other}"/>
         <form:errors path="gender"/>
         <br/>
         <form:button>

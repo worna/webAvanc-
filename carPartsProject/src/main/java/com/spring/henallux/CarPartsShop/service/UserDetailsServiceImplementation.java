@@ -1,7 +1,7 @@
-package com.spring.henallux.carPartsProject.service;
+package com.spring.henallux.CarPartsShop.service;
 
-import com.spring.henallux.carPartsProject.dataAccess.dao.UserDAO;
-import com.spring.henallux.carPartsProject.model.User;
+import com.spring.henallux.CarPartsShop.dataAccess.dao.UserDAO;
+import com.spring.henallux.CarPartsShop.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

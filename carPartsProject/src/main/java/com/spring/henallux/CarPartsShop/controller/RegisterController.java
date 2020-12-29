@@ -1,7 +1,7 @@
-package com.spring.henallux.carPartsProject.controller;
+package com.spring.henallux.CarPartsShop.controller;
 
-import com.spring.henallux.carPartsProject.dataAccess.dao.UserDAO;
-import com.spring.henallux.carPartsProject.model.User;
+import com.spring.henallux.CarPartsShop.dataAccess.dao.UserDAO;
+import com.spring.henallux.CarPartsShop.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

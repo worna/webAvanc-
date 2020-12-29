@@ -1,10 +1,10 @@
-package com.spring.henallux.carPartsProject.dataAccess.util;
+package com.spring.henallux.CarPartsShop.dataAccess.util;
 
-import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryEntity;
-import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryTranslationEntity;
-import com.spring.henallux.carPartsProject.dataAccess.entity.ProductEntity;
-import com.spring.henallux.carPartsProject.dataAccess.entity.UserEntity;
-import com.spring.henallux.carPartsProject.model.*;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryTranslationEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.ProductEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.UserEntity;
+import com.spring.henallux.CarPartsShop.model.*;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,9 @@
-package com.spring.henallux.carPartsProject.dataAccess.dao;
+package com.spring.henallux.CarPartsShop.dataAccess.dao;
 
-import com.spring.henallux.carPartsProject.dataAccess.entity.UserEntity;
-import com.spring.henallux.carPartsProject.dataAccess.repository.UserRepository;
-import com.spring.henallux.carPartsProject.dataAccess.util.ProviderConverter;
-import com.spring.henallux.carPartsProject.model.User;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.UserEntity;
+import com.spring.henallux.CarPartsShop.dataAccess.repository.UserRepository;
+import com.spring.henallux.CarPartsShop.dataAccess.util.ProviderConverter;
+import com.spring.henallux.CarPartsShop.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject.model;
+package com.spring.henallux.CarPartsShop.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
@@ -47,14 +47,14 @@ public class User implements UserDetails {
     @Past
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date birthDate;
-    private int gender;
+    private Integer gender;
     private String authorities;
     private Boolean accountNonExpired;
     private Boolean accountNonLocked;
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    public User(@NotBlank @Email @Size(min = 3, max = 40) String email, @NotBlank @Size(min = 8, max = 40) String password, @NotBlank @Size(min = 3, max = 40) String lastName, @NotBlank @Size(min = 3, max = 40) String firstName, @NotBlank @Size(min = 8, max = 15) String phoneNumber, @NotBlank @Size(min = 3, max = 40) String street, @NotBlank @Size(min = 3, max = 40) String city, @NotBlank @Size(min = 3, max = 10) String postalCode, @NotBlank @Size(min = 3, max = 40) String country, @NotNull @Past Date birthDate, int gender, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public User(@NotBlank @Email @Size(min = 3, max = 40) String email, @NotBlank @Size(min = 8, max = 40) String password, @NotBlank @Size(min = 3, max = 40) String lastName, @NotBlank @Size(min = 3, max = 40) String firstName, @NotBlank @Size(min = 8, max = 15) String phoneNumber, @NotBlank @Size(min = 3, max = 40) String street, @NotBlank @Size(min = 3, max = 40) String city, @NotBlank @Size(min = 3, max = 10) String postalCode, @NotBlank @Size(min = 3, max = 40) String country, @NotNull @Past Date birthDate, Integer gender, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         this.email = email;
         this.password = password;
         this.lastName = lastName;
@@ -122,7 +122,7 @@ public class User implements UserDetails {
         return birthDate;
     }
 
-    public int getGender() {
+    public Integer getGender() {
         return gender;
     }
 
@@ -203,7 +203,7 @@ public class User implements UserDetails {
         this.birthDate = birthDate;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 

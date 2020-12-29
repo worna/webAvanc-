@@ -1,4 +1,4 @@
-package com.spring.henallux.carPartsProject.controller;
+package com.spring.henallux.CarPartsShop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

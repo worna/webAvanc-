@@ -1,8 +1,8 @@
-package com.spring.henallux.carPartsProject.dataAccess.dao;
+package com.spring.henallux.CarPartsShop.dataAccess.dao;
 
 
 
-import com.spring.henallux.carPartsProject.model.Category;
+import com.spring.henallux.CarPartsShop.model.Category;
 
 
 import java.util.List;

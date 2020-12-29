@@ -1,7 +1,7 @@
-package com.spring.henallux.carPartsProject.controller;
+package com.spring.henallux.CarPartsShop.controller;
 
-import com.spring.henallux.carPartsProject.model.Cart;
-import com.spring.henallux.carPartsProject.model.Product;
+import com.spring.henallux.CarPartsShop.model.Cart;
+import com.spring.henallux.CarPartsShop.model.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

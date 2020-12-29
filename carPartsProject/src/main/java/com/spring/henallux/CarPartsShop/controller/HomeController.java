@@ -1,13 +1,13 @@
-package com.spring.henallux.carPartsProject.controller;
+package com.spring.henallux.CarPartsShop.controller;
 
-import com.spring.henallux.carPartsProject.AddUsers;
-import com.spring.henallux.carPartsProject.dataAccess.dao.CategoryDAO;
-import com.spring.henallux.carPartsProject.dataAccess.dao.CategoryTranslationDAO;
-import com.spring.henallux.carPartsProject.dataAccess.dao.ProductDAO;
-import com.spring.henallux.carPartsProject.model.Category;
-import com.spring.henallux.carPartsProject.model.CategoryTranslation;
-import com.spring.henallux.carPartsProject.model.Product;
-import com.spring.henallux.carPartsProject.model.User;
+import com.spring.henallux.CarPartsShop.AddUsers;
+import com.spring.henallux.CarPartsShop.dataAccess.dao.CategoryDAO;
+import com.spring.henallux.CarPartsShop.dataAccess.dao.CategoryTranslationDAO;
+import com.spring.henallux.CarPartsShop.dataAccess.dao.ProductDAO;
+import com.spring.henallux.CarPartsShop.model.Category;
+import com.spring.henallux.CarPartsShop.model.CategoryTranslation;
+import com.spring.henallux.CarPartsShop.model.Product;
+import com.spring.henallux.CarPartsShop.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
