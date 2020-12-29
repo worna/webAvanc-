@@ -22,15 +22,9 @@ public class CategoryDAO implements CategoryDataAccess {
         this.categoryRepository = categoryRepository;
         this.providerConverter = providerConverter;
     }
-
-    public Category findByCategoryId (int id){
-        CategoryEntity categoryEntity = categoryRepository.findByCategoryId(id);
-        Category category = providerConverter.categoryEntityToCategoryModel(categoryEntity);
-        return category;
-    }
-    public List<Category> findByOrderByName(){
+    public List<Category> findAll(){
         List<Category> categories = new ArrayList<Category>();
-        List<CategoryEntity> categoryEntities = categoryRepository.findByOrderByName();
+        List<CategoryEntity> categoryEntities = categoryRepository.findAll();
         for(int i = 0; i < categoryEntities.size(); i++){
             categories.add(providerConverter.categoryEntityToCategoryModel(categoryEntities.get(i)));
         }

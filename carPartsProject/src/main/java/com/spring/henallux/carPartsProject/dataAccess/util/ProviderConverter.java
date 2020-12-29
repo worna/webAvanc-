@@ -1,12 +1,10 @@
 package com.spring.henallux.carPartsProject.dataAccess.util;
 
 import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryEntity;
+import com.spring.henallux.carPartsProject.dataAccess.entity.CategoryTranslationEntity;
 import com.spring.henallux.carPartsProject.dataAccess.entity.ProductEntity;
 import com.spring.henallux.carPartsProject.dataAccess.entity.UserEntity;
-import com.spring.henallux.carPartsProject.model.Category;
-import com.spring.henallux.carPartsProject.model.Image;
-import com.spring.henallux.carPartsProject.model.Product;
-import com.spring.henallux.carPartsProject.model.User;
+import com.spring.henallux.carPartsProject.model.*;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Component;
@@ -23,7 +21,11 @@ public class ProviderConverter {
         user.setLastName(userEntity.getLastName());
         user.setFirstName(userEntity.getFirstName());
         user.setPhoneNumber(userEntity.getPhoneNumber());
-        user.setBirthDate(userEntity.getBirthDate());
+        user.setStreet(userEntity.getStreet());
+        user.setCity(userEntity.getCity());
+        user.setPostalCode(userEntity.getPostalCode());
+        user.setCountry(userEntity.getCountry());
+        user.setBirthDate(new java.util.Date(userEntity.getBirthDate().getTime()));
         user.setGender(userEntity.getGender());
         user.setAccountNonExpired(userEntity.isAccountNonExpired());
         user.setAccountNonLocked(userEntity.isAccountNonLocked());
@@ -39,7 +41,11 @@ public class ProviderConverter {
         userEntity.setLastName(user.getLastName());
         userEntity.setFirstName(user.getFirstName());
         userEntity.setPhoneNumber(user.getPhoneNumber());
-        userEntity.setBirthDate(user.getBirthDate());
+        userEntity.setStreet(user.getStreet());
+        userEntity.setCity(user.getCity());
+        userEntity.setPostalCode(user.getPostalCode());
+        userEntity.setCountry(user.getCountry());
+        userEntity.setBirthDate(new java.sql.Date(user.getBirthDate().getTime()));
         userEntity.setGender(user.getGender());
         userEntity.setAccountNonExpired(user.isAccountNonExpired());
         userEntity.setAccountNonLocked(user.isAccountNonLocked());
@@ -58,6 +64,10 @@ public class ProviderConverter {
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
         Category category = mapper.map(categoryEntity, Category.class);
         return category;
+    }
+    public CategoryTranslation categoryTranslationEntityToCategoryTranslationModel(CategoryTranslationEntity categoryTranslationEntity){
+        CategoryTranslation categoryTranslation = new CategoryTranslation(categoryTranslationEntity.getName(),categoryTranslationEntity.getCategoryId(),categoryTranslationEntity.getLanguageName());
+        return categoryTranslation;
     }
 
 }

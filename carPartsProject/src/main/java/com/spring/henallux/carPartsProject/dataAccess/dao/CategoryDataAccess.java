@@ -9,6 +9,5 @@ import java.util.List;
 
 
 public interface CategoryDataAccess {
-    Category findByCategoryId (int id);
-    List<Category> findByOrderByName();
+    List<Category> findAll();
 }

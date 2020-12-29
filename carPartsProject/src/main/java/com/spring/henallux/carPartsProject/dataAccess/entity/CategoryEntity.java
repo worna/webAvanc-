@@ -7,8 +7,6 @@ import javax.persistence.*;
 public class CategoryEntity {
 
 
-    @Column(name = "name")
-    private String name;
 
     @Id
     @Column(name = "category_id")
@@ -21,19 +19,12 @@ public class CategoryEntity {
     public CategoryEntity() {
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCcategoryId(int categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 
