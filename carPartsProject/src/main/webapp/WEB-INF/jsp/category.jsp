@@ -3,7 +3,7 @@
 <html>
     <body>
         <div id="category_title">${CategoryName}</div>
-        <div class="path"><a href="<spring:url value="/home"/>"><spring:message code="home"/></a> > <a href="<spring:url value="/category/${CategoryId}"/>">...</a></div>
+        <div class="path"><a href="<spring:url value="/"/>"><spring:message code="home"/></a> > <a href="<spring:url value="/category/${CategoryId}"/>">...</a></div>
         <c:forEach items="${Products}" var="product">
             <a class="preview_link" href="<spring:url value="/product/${product.id}"/>">
                 <div class="preview" >

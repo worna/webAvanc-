@@ -30,7 +30,7 @@ public class RegisterController {
             String welcomeMessage = "welcome," + inscriptionForm.getEmail()+"!";
             userDAO.addUser(inscriptionForm);
             System.out.println(welcomeMessage);
-            return "redirect:/home";
+            return "redirect:/";
         } else {
             System.out.println(errors.getModel());
             return "integrated:register";

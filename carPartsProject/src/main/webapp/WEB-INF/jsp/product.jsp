@@ -3,7 +3,7 @@
 <html>
     <body>
         <div id="product_view">
-            <div class="path"><a href="<spring:url value="/home"/>"><spring:message code="home"/></a> > <a href="<spring:url value="/category/${Product.category.categoryId}"/>">${CategoryTranslation.name}</a> > <a href="<spring:url value="/product/${Product.id}"/>">...</a></div>
+            <div class="path"><a href="<spring:url value="/"/>"><spring:message code="home"/></a> > <a href="<spring:url value="/category/${Product.category.categoryId}"/>">${CategoryTranslation.name}</a> > <a href="<spring:url value="/product/${Product.id}"/>">...</a></div>
             <div id="leftCol">
                 <img class="product_image" src="<spring:url value="/images/products/${Product.image}"/>" />
             </div>

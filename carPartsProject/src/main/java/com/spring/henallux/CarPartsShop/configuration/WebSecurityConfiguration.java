@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/register/**", "/company", "/cart","/category/**","/product/**","/css/**", "/images/**"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/", "/register/**", "/company", "/cart","/category/**","/product/**","/css/**", "/images/**"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
     private UserDetailsService userDetailsServiceImpl;
@@ -41,6 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .formLogin() // We define the login part here.
+                .defaultSuccessUrl("/", true)
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
                 .loginPage(LOGIN_REQUEST) // We specify a login page. Otherwise spring creates one by default
                 .usernameParameter("email")
@@ -49,7 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout() // We define the logout part here - By default : URL = "/logout"
                 //.logoutUrl("...") // If other link than "/logout" (that is by default)
-                .logoutSuccessUrl("/home")  // URL to return if logout is successfull
+                .logoutSuccessUrl("/")  // URL to return if logout is successfull
                 .permitAll(); // To make the logout available for any user
     }
 

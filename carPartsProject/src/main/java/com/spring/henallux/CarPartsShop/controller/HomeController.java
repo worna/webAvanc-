@@ -21,7 +21,7 @@ import java.util.Locale;
 
 
 @Controller
-@RequestMapping(value="/home")
+@RequestMapping(value="/")
 public class HomeController {
     @Autowired
     private CategoryDAO categoryDAO;

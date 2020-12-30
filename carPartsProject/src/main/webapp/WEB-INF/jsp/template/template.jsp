@@ -17,7 +17,7 @@
     </head>
     <body>
         <div id="banniere">
-            <a id="logo-banniere" href='<spring:url value="/home"/>'>
+            <a id="logo-banniere" href='<spring:url value="/"/>'>
                 <img id="img-banniere" src='<spring:url value="/images/imgBanniere.png" />'/>
             </a>
             <input id="search" type="text" placeholder='<spring:message code="search"/>'>
@@ -31,7 +31,7 @@
                         <a href='<spring:url value="/logout"/>'><spring:message code="logout"/> </a>
                     </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
-                        <a href='<spring:url value="/home/connected"/>'><spring:message code="login"/> </a>
+                        <a href='<spring:url value="/login"/>'><spring:message code="login"/> </a>
                     </sec:authorize>
                 </div>
                 <span>|</span>

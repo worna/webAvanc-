@@ -15,7 +15,7 @@
 <div class="authentication">
     <form:form id="userRegister"
                method="POST"
-               action="/CarPartsShop/register/send"
+               action="/register/send"
                modelAttribute="userForm">
         <div class="inputContainer">
             <spring:message code="firstName" var="firstNamePlaceholder"/>
