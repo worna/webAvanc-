@@ -6,10 +6,8 @@ import javax.persistence.*;
 @Entity(name="category")
 public class CategoryEntity {
 
-
-
     @Id
-    @Column(name = "category_id")
+    @Column(name = "id")
     private int categoryId;
 
     @Column(name = "image")

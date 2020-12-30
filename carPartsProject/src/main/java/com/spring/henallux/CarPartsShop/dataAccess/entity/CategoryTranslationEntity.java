@@ -18,7 +18,7 @@ public class CategoryTranslationEntity {
     @Column(name = "language_name")
     private String languageName;
 
-    @Column(name = "name")
+    @Column(name = "category_name")
     private String name;
 
 

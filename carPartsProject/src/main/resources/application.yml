@@ -4,6 +4,6 @@ server:
     contextPath: /CarPartsShop
 spring:
   datasource:
-    password: password
-    url: jdbc:mysql://localhost:3306/carparts?user=web_user
-    driverClassName : com.mysql.cj.jdbc.Driver
+    password: mssqlPWD1*
+    url: jdbc:sqlserver://localhost:1433;user=sa;databaseName=CarPartsShop;
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver

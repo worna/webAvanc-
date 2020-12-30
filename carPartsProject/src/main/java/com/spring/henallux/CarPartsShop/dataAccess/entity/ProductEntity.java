@@ -10,7 +10,7 @@ import java.sql.Date;
 public class ProductEntity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "reference")
     private Integer id;
 
     @Column(name = "name")
@@ -32,7 +32,7 @@ public class ProductEntity {
     private String description;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="product_category")
     private CategoryEntity categoryEntity;
 
     @Column(name = "image")
