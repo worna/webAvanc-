@@ -30,6 +30,19 @@ h3{
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+/*Errors*/
+#logoAccessDenied{
+    height: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#errorMessage{
+    text-align: center;
+    padding-bottom: 5%;
+    font: 1.2em "Fira Sans", sans-serif;
+}
+/*template*/
 #banniere{
     background-color: #121212;
     color:white;
@@ -88,7 +101,6 @@ h3{
 #cart:hover{
     color: #ec8405;
 }
-
 #banniere + * {
     margin-top: 4vw;
 }
@@ -106,11 +118,9 @@ h3{
     margin-left: 0.1vw;
     margin-right: 0.1vw;
 }
-
-
-
-
-
+.nothingAtTheMoment{
+    text-align: center;
+}
 
 /*product*/
 #product_view{
@@ -125,7 +135,6 @@ h3{
     vertical-align: top;
     margin-left: 10%;
 }
-
 #product_view .product_image{
     background-color: rgba(174,170,176,0.54);
     width: 100%;

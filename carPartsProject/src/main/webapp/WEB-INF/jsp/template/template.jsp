@@ -47,12 +47,17 @@
             <tiles:insertAttribute name="main-content"/>
         </div>
         <div id="footer">
-            <a href="${localeFr}">
-            <img class="language-flag" alt="fr" src='<spring:url value="/images/french.jpg"/>'/>
-            </a>
-            <a href="${localeEn}">
-                <img class="language-flag" alt="en" src='<spring:url value="/images/english.jpg"/>'/>
-            </a>
+            <c:set var="localeCode" value="${pageContext.response.locale}" />
+            <c:if test="${localeCode != 'fr'}">
+                <a href="${localeFr}">
+                <img class="language-flag" alt="fr" src='<spring:url value="/images/french.jpg"/>'/>
+                </a>
+            </c:if>
+            <c:if test="${localeCode != 'en'}">
+                <a href="${localeEn}">
+                    <img class="language-flag" alt="en" src='<spring:url value="/images/english.jpg"/>'/>
+                </a>
+            </c:if>
             <a href='<spring:url value="/company"/>'><spring:message code="company"/> </a>
         </div>
     </body>

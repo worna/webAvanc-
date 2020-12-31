@@ -17,7 +17,7 @@
             <form:label path="email" class="label">
                 <spring:message code="email"/>
             </form:label>
-            <form:errors path="email"/>
+            <form:errors path="email" class="errors"/>
         </div>
         <br/>
         <div class="inputContainer">
@@ -26,7 +26,7 @@
             <form:label path="password" class="label">
                 <spring:message code="password"/>
             </form:label>
-            <form:errors path="password"/>
+            <form:errors path="password" class="errors"/>
         </div>
         <br/>
         <form:button >

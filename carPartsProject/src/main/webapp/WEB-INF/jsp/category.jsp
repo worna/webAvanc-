@@ -4,6 +4,7 @@
     <body>
         <div id="category_title">${CategoryName}</div>
         <div class="path"><a href="<spring:url value="/"/>"><spring:message code="home"/></a> > <a href="<spring:url value="/category/${CategoryId}"/>">...</a></div>
+        <c:if test="${Products.isEmpty()}"><div class="nothingAtTheMoment"><spring:message code="noProduct"/></div></c:if>
         <c:forEach items="${Products}" var="product">
             <a class="preview_link" href="<spring:url value="/product/${product.id}"/>">
                 <div class="preview" >
