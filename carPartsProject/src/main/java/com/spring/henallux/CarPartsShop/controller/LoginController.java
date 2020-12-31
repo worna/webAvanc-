@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
     @RequestMapping ( method = RequestMethod.GET)
-    public String home (Model model, Authentication auth){
+    public String home (Model model, Authentication auth, @RequestParam(value = "error", required = false) String error){
         if(auth == null) {
             model.addAttribute("title", "Login");
             model.addAttribute("userDetails", new User());
+            if(error != null) {
+                model.addAttribute("errorMessge", error);
+            }
             return "integrated:login";
         } else {
             return "redirect:/";

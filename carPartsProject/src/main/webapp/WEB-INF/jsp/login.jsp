@@ -5,8 +5,10 @@
   Time: 17:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="include/importTags.jsp"%>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="include/importTags.jsp"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="authentication">
     <form:form id="userLogin"
                method="POST"
@@ -17,7 +19,6 @@
             <form:label path="email" class="label">
                 <spring:message code="email"/>
             </form:label>
-            <form:errors path="email" class="errors"/>
         </div>
         <br/>
         <div class="inputContainer">
@@ -26,8 +27,10 @@
             <form:label path="password" class="label">
                 <spring:message code="password"/>
             </form:label>
-            <form:errors path="password" class="errors"/>
         </div>
+        <c:if test="${errorMessge != null}">
+            <p class="errors"><spring:message code="loginError"/></p>
+        </c:if>
         <br/>
         <form:button >
             <spring:message code="login"/>
