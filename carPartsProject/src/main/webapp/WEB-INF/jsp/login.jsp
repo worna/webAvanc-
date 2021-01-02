@@ -28,7 +28,7 @@
                 <spring:message code="password"/>
             </form:label>
         </div>
-        <c:if test="${errorMessge != null}">
+        <c:if test="${errorMessage != null}">
             <p class="errors"><spring:message code="loginError"/></p>
         </c:if>
         <br/>

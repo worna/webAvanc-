@@ -1,9 +1,13 @@
-
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.spring.henallux.CarPartsShop.model.Product" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../include/importTags.jsp"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<%
+    HashMap<Integer, Integer> shoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("shoppingCart");
+    int shoppingCartSize = shoppingCart == null ? 0 : shoppingCart.size();
+%>
 <html>
     <head>
         <link type="text/css" href="<spring:url value='/css/first.css' />" rel="Stylesheet"/>
@@ -38,6 +42,7 @@
                 <div id="cart">
                     <a href="<spring:url value="/cart"/>">
                         <spring:message code="cart"/>
+                        (<%=shoppingCartSize%>)
                     </a>
                 </div>
             </div>

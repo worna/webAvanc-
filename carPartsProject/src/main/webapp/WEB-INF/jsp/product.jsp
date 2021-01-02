@@ -20,7 +20,18 @@
                         <div class="alert"><spring:message code="outOfStock"/></div>
                     </c:when>
                     <c:otherwise>
-                        quantité a commander
+                        <form:form
+                        method="post"
+                        action="${Product.id}/addToCart"
+                        modelAttribute="productToCart">
+                            <form:input path="quantity" type="number"/>
+                            <form:label path="quantity" class="label">
+                                <spring:message code="quantity"/> :
+                            </form:label>
+                            <form:button>
+                                <spring:message code="addToCart"/>
+                            </form:button>
+                        </form:form>
                     </c:otherwise>
                 </c:choose>
             </div>

@@ -1,11 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pc
-  Date: 18-11-20
-  Time: 17:38
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="include/importTags.jsp"%>
 
-${sessionCart}
+<html>
+    <body>
+        <c:if test="${products.isEmpty()}">
+            <div>
+                <p>Votre panier est vide !</p>
+            </div>
+        </c:if>
+        <c:forEach items="${products}" var="product">
+            <div>
+                <h3>Product : ${product.name}</h3>
+                <p>Quantity : ${product.quantity}</p>
+                <p>Price : ${product.price}</p>
+            </div>
+        </c:forEach>
+    </body>
+</html>
 
