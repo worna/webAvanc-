@@ -1,0 +1,9 @@
+client:
+-email:personal.carpartsshop@test.com
+--MDP:arnajust
+-email:sb-lv5rn4474852@personal.example.com
+--MDP:arnajust
+vendeur:
+-email:business@carPartShop.com
+--MDP:justarna
+

@@ -15,6 +15,7 @@
                 <p>Price : ${product.price}</p>
             </div>
         </c:forEach>
+        <a href="<spring:url value="/buy"/>"><spring:message code="buy"/></a>
     </body>
 </html>
 

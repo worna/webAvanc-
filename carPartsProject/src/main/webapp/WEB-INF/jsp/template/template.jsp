@@ -31,7 +31,7 @@
             <div id="rightPart">
                 <div id="authentication">
                     <sec:authorize access="isAuthenticated()">
-                        Hi ${pageContext.request.userPrincipal.principal.username}
+                        Hi ${pageContext.request.userPrincipal.principal.firstName}
                         <a href='<spring:url value="/logout"/>'><spring:message code="logout"/> </a>
                     </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
