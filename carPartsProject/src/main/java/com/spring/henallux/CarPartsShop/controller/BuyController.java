@@ -38,6 +38,7 @@ public class BuyController {
             products.add(new ProductInCart(productModel.getName(), quantity, productModel.getPrice()));
         });
 
+        ShoppingCart.clearCart(request);
         model.addAttribute("title", "Car parts - Buy");
         model.addAttribute("products", products);
         return "integrated:buy";

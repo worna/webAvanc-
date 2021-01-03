@@ -12,7 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-Continuer le payement?
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_cart">
     <input type="hidden" name="upload" value="1">
@@ -21,9 +20,9 @@ Continuer le payement?
     <input type="hidden" name="cert_id" value="AcumLlDnDDuYwPGDt5yD-R47PzBr6XxBocA_O3mR_13Z2sN6FA9TDq4Nn8gEF5YvfFlQz_Gx8BDBYdeB">
 
     <c:forEach items="${products}" var="product" varStatus="loop">
-        <input type="text" name="item_name_${loop.index+1}" value="${product.name}">
-        <input type="text" name="amount_${loop.index+1}" value="${product.price}">
-        <input type="text" name="quantity_${loop.index+1}" value="${product.quantity}">
+        <input type="hidden" name="item_name_${loop.index+1}" value="${product.name}">
+        <input type="hidden" name="amount_${loop.index+1}" value="${product.price}">
+        <input type="hidden" name="quantity_${loop.index+1}" value="${product.quantity}">
     </c:forEach>
 
     <input type="hidden" name="shipping_1" value="5" />
@@ -42,9 +41,8 @@ Continuer le payement?
     <input type='hidden' name='cancel_return' value='http://localhost:8082/cart'>
     <input type='hidden' name='return' value='http://localhost:8082/'>
     <input type="image" name="submit"
-           src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+           src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppcredit-logo-small.png"
            alt="PayPal - The safer, easier way to pay online">
 </form>
-<a href="<spring:url value="/cart"/>"><spring:message code="cancel"/></a>
 </body>
 </html>

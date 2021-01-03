@@ -24,7 +24,6 @@
             <a id="logo-banniere" href='<spring:url value="/"/>'>
                 <img id="img-banniere" src='<spring:url value="/images/imgBanniere.png" />'/>
             </a>
-            <input id="search" type="text" placeholder='<spring:message code="search"/>'>
             <sec:authorize access="hasRole('ADMIN')">
                 <a href='<spring:url value="/admin"/>'><spring:message code="admin"/> </a>
             </sec:authorize>

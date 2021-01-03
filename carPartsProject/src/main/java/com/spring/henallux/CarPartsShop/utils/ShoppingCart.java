@@ -24,4 +24,9 @@ public class ShoppingCart {
         request.getSession().setAttribute("shoppingCart", shoppingCart);
 
     }
+
+    public static void clearCart( HttpServletRequest request){
+        request.getSession().setAttribute("shoppingCart", new HashMap<>());
+
+    }
 }
