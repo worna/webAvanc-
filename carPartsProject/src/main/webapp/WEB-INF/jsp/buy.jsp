@@ -20,9 +20,9 @@
     <input type="hidden" name="cert_id" value="AcumLlDnDDuYwPGDt5yD-R47PzBr6XxBocA_O3mR_13Z2sN6FA9TDq4Nn8gEF5YvfFlQz_Gx8BDBYdeB">
 
     <c:forEach items="${products}" var="product" varStatus="loop">
-        <input type="hidden" name="item_name_${loop.index+1}" value="${product.name}">
-        <input type="hidden" name="amount_${loop.index+1}" value="${product.price}">
-        <input type="hidden" name="quantity_${loop.index+1}" value="${product.quantity}">
+        <input type="hidden" name="item_name_${loop.index+1}" value="${product.key.name}">
+        <input type="hidden" name="amount_${loop.index+1}" value="${product.key.price}">
+        <input type="hidden" name="quantity_${loop.index+1}" value="${product.value}">
     </c:forEach>
 
     <input type="hidden" name="shipping_1" value="5" />

@@ -28,6 +28,10 @@ public class ProductDAO implements ProductDataAccess {
 
     public Product findById (int id){
         ProductEntity productEntity = productRepository.findById(id);
+
+        if(productEntity == null)
+            return null;
+
         Product product = providerConverter.productEntityToProductModel(productEntity);
         return product;
     }

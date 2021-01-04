@@ -29,30 +29,28 @@ public class BuyController {
         this.productDAO = productDAO;
     }
 
-    @RequestMapping ( method = RequestMethod.GET)
+    @RequestMapping (method = RequestMethod.GET)
     public String home(Model model, HttpServletRequest request) {
-        ArrayList<ProductInCart> products = new ArrayList<>();
-        HashMap<Integer, Integer> productsInCart = ShoppingCart.getShoppingCart(request);
+        HashMap<Product, Integer> productsInCart = ShoppingCart.getShoppingCart(request);
+        if(productsInCart.size() == 0)
+            return "redirect:/cart";
+
         validCart = true;
         productsInCart.forEach((product, quantity) -> {
-            Product productModel = productDAO.findById(product);
-            if(productModel.getQuantityLeft() < quantity)
+            if(product.getQuantityLeft() < quantity)
                 validCart = false;
         });
         if(validCart){
             productsInCart.forEach((product, quantity) -> {
-                Product productModel = productDAO.findById(product);
-                products.add(new ProductInCart(productModel.getName(), quantity, productModel.getPrice()));
-                productDAO.updateProduct(product, quantity);
+                productDAO.updateProduct(product.getId(), quantity);
             });
 
             ShoppingCart.clearCart(request);
             model.addAttribute("title", "Car parts - Buy");
-            model.addAttribute("products", products);
+            model.addAttribute("products", productsInCart);
             return "integrated:buy";
-        }else{
+        } else {
             return "redirect:/cart";
         }
     }
-    
 }

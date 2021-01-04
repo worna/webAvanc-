@@ -14,9 +14,21 @@
             <c:otherwise>
                 <c:forEach items="${products}" var="product">
                     <div>
-                        <h3>Product : ${product.name}</h3>
-                        <p>Quantity : ${product.quantity}</p>
-                        <p>Price : ${product.price}</p>
+                        <h3>Product : ${product.key.name}</h3>
+                        <p>Quantity : ${product.value}</p>
+                        <p>Price : ${product.key.price * product.value}</p>
+                        <form:form
+                                method="post"
+                                action="/cart/modifyQuantity/${product.key.id}"
+                                modelAttribute="productToCart">
+                            <form:input path="quantity" type="number" min="0" max="${product.key.quantityLeft}"/>
+                            <form:label path="quantity" class="label">
+                                <spring:message code="quantity"/> :
+                            </form:label>
+                            <form:button>
+                                <spring:message code="modifyQuantity"/>
+                            </form:button>
+                        </form:form>
                     </div>
                 </c:forEach>
                 <a href="<spring:url value="/buy"/>"  onclick="return confirm('<spring:message code="confirmPayment"/>');"><spring:message code="buy"/></a>

@@ -7,12 +7,15 @@ import com.spring.henallux.CarPartsShop.utils.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -30,6 +33,8 @@ public class ProductController {
     @RequestMapping ( method = RequestMethod.GET)
     public String home(Model model, @PathVariable String id, Locale locale){
         Product result = productDAO.findById(Integer.parseInt(id));
+        if(result == null)
+            return "redirect:/404";
         CategoryTranslation categoryTranslation = categoryTranslationDAO.findByCategoryIdAndLanguageName(result.getCategory().getCategoryId(),locale.getLanguage());
         model.addAttribute("Product", result);
         model.addAttribute("CategoryTranslation", categoryTranslation);
@@ -40,13 +45,15 @@ public class ProductController {
 
     @RequestMapping(value="/addToCart", method=RequestMethod.POST)
     public String addProductToCart(HttpServletRequest request, @PathVariable String id, @ModelAttribute(value = "productToCart") ProductToCart productToCart) {
-        int quantity = productToCart.getQuantity();
+        Product result = productDAO.findById(Integer.parseInt(id));
+        if(result == null)
+            return "redirect:/404";
 
-        ShoppingCart.addProduct(Integer.parseInt(id), quantity, request);
+        if(result.getQuantityLeft() >= productToCart.getQuantity() && productToCart.getQuantity() > 0) {
+            int quantity = productToCart.getQuantity();
+            ShoppingCart.addProduct(result, quantity, request);
+        }
 
-
-
-        return "redirect:/";
+        return "redirect:/product/" + id;
     }
-
 }

@@ -24,6 +24,8 @@ public class CategoryTranslationDAO implements CategoryTranslationDataAccess {
 
     public CategoryTranslation findByCategoryIdAndLanguageName (Integer id, String language){
         CategoryTranslationEntity categoryTranslationEntity = categoryTranslationRepository.findByCategoryIdAndLanguageName(id, language);
+        if(categoryTranslationEntity == null)
+            return null;
         CategoryTranslation categoryTranslation = providerConverter.categoryTranslationEntityToCategoryTranslationModel(categoryTranslationEntity);
         return categoryTranslation;
     }

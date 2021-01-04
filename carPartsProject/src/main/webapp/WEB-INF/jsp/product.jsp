@@ -22,7 +22,7 @@
                     <c:otherwise>
                         <form:form
                         method="post"
-                        action="${Product.id}/addToCart"
+                        action="/product/${Product.id}/addToCart"
                         modelAttribute="productToCart">
                             <form:input path="quantity" type="number" min="1" max="${Product.quantityLeft}"/>
                             <form:label path="quantity" class="label">

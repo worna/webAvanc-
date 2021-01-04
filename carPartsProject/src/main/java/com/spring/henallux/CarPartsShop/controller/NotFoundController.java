@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping(value="/403")
-public class AccessDeniedController {
+@RequestMapping(value="/404")
+public class NotFoundController {
 
     @Autowired
-    public AccessDeniedController() {
+    public NotFoundController() {
     }
 
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model){
         model.addAttribute("title","Car parts shop");
-        return "integrated:accessDenied";
+        return "integrated:notFound";
     }
     
 }

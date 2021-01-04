@@ -25,6 +25,9 @@ public class CategoryController {
     @RequestMapping ( method = RequestMethod.GET)
     public String home(Model model, @PathVariable String id, Locale locale){
         CategoryTranslation categoryTranslation = categoryTranslationDAO.findByCategoryIdAndLanguageName(Integer.parseInt(id),locale.getLanguage());
+        if(categoryTranslation == null)
+            return "redirect:/404";
+
         List<Product> productResult = productDAO.findByCategoryEntity_CategoryId(Integer.parseInt(id));
         model.addAttribute("CategoryName", categoryTranslation.getName());
         model.addAttribute("CategoryId", id);
