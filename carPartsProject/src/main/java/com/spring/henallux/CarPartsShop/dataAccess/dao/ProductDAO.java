@@ -55,4 +55,9 @@ public class ProductDAO implements ProductDataAccess {
         }
         return products;
     }
+    public void updateProduct(Integer id, Integer quantity){
+        ProductEntity productEntity = productRepository.findById(id);
+        productEntity.setQuantityLeft(productEntity.getQuantityLeft()-quantity);
+        productRepository.save(productEntity);
+    }
 }

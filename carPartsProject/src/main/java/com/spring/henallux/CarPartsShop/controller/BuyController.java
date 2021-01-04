@@ -22,6 +22,7 @@ import java.util.HashMap;
 public class BuyController {
 
     private ProductDAO productDAO;
+    private boolean validCart;
 
     @Autowired
     public BuyController(ProductDAO productDAO){
@@ -32,16 +33,26 @@ public class BuyController {
     public String home(Model model, HttpServletRequest request) {
         ArrayList<ProductInCart> products = new ArrayList<>();
         HashMap<Integer, Integer> productsInCart = ShoppingCart.getShoppingCart(request);
-
+        validCart = true;
         productsInCart.forEach((product, quantity) -> {
             Product productModel = productDAO.findById(product);
-            products.add(new ProductInCart(productModel.getName(), quantity, productModel.getPrice()));
+            if(productModel.getQuantityLeft() < quantity)
+                validCart = false;
         });
+        if(validCart){
+            productsInCart.forEach((product, quantity) -> {
+                Product productModel = productDAO.findById(product);
+                products.add(new ProductInCart(productModel.getName(), quantity, productModel.getPrice()));
+                productDAO.updateProduct(product, quantity);
+            });
 
-        ShoppingCart.clearCart(request);
-        model.addAttribute("title", "Car parts - Buy");
-        model.addAttribute("products", products);
-        return "integrated:buy";
+            ShoppingCart.clearCart(request);
+            model.addAttribute("title", "Car parts - Buy");
+            model.addAttribute("products", products);
+            return "integrated:buy";
+        }else{
+            return "redirect:/cart";
+        }
     }
     
 }
