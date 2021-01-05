@@ -18,12 +18,24 @@
                         <table>
                             <tr>
                                 <td><spring:message code="orderDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.key.date}" /></td>
-                                <c:if test="${order.key.paymentDate != null}">
-                                    <td><spring:message code="paymentDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.key.paymentDate}" /></td>
-                                </c:if>
-                                <c:if test="${order.key.receptionDate != null}">
-                                    <td><spring:message code="receptionDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.key.receptionDate}" /></td>
-                                </c:if>
+                                <c:choose>
+                                    <c:when test="${order.key.paymentDate != null}">
+                                        <td><spring:message code="paymentDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.key.paymentDate}" /></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td>
+                                            <a href="<spring:url value='/buy/${order.key.id}'/>"/><input type=button value='<spring:message code="pay"/>'></a>
+                                        </td>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${order.key.receptionDate != null}">
+                                        <td><spring:message code="receptionDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.key.receptionDate}" /></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td><spring:message code="notYetReceveid"/></td>
+                                    </c:otherwise>
+                                </c:choose>
                             </tr>
                         </table>
                         <c:if test="${order.key.promotion != null}">
@@ -33,9 +45,9 @@
                             <table>
                                 <tr>
                                     <th></th>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
+                                    <th><spring:message code="product"/></th>
+                                    <th><spring:message code="quantity"/></th>
+                                    <th><spring:message code="price"/></th>
                                 </tr>
                                 <c:forEach items="${order.value}" var="product">
                                     <tr>

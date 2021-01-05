@@ -14,9 +14,9 @@
             <c:otherwise>
                 <c:forEach items="${products}" var="product">
                     <div>
-                        <h3>Product : ${product.key.name}</h3>
-                        <p>Quantity : ${product.value}</p>
-                        <p>Price : ${product.key.price * product.value}</p>
+                        <h3><spring:message code="product"/> : ${product.key.name}</h3>
+                        <p><spring:message code="quantity"/> : ${product.value}</p>
+                        <p><spring:message code="price"/> : ${product.key.price * product.value}</p>
                         <form:form
                                 method="post"
                                 action="/cart/modifyQuantity/${product.key.id}"

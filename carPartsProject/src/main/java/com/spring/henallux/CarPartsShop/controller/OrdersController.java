@@ -47,8 +47,9 @@ public class OrdersController {
         }
 
         model.addAttribute("orders", orders);
+        model.addAttribute("productToCart", new ProductToCart());
         model.addAttribute("title","Car parts");
-        
+
         return "integrated:orders";
     }
 }
