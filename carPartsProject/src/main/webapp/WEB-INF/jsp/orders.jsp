@@ -13,15 +13,19 @@
             </c:when>
             <c:otherwise>
                 <c:forEach items="${orders}" var="order">
-                    <div>
+                    <div class="order">
                         <h3><spring:message code="orderId"/> : ${order.id}</h3>
-                        <p><spring:message code="orderDate"/> : ${order.date}</p>
-                        <p><spring:message code="paymentDate"/> : ${order.paymentDate}</p>
-                        <c:if test="${product.receptionDate != null}">
-                            <p><spring:message code="receptionDate"/> : ${product.receptionDate}</p>
-                        </c:if>
-                        <c:if test="${product.promotion != null}">
-                            <p><spring:message code="promotion"/> : ${product.promotion.percent}% (${product.promotion.name})</p>
+                        <table>
+                            <tr>
+                                <td><spring:message code="orderDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.date}" /></td>
+                                <td><spring:message code="paymentDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.paymentDate}" /></td>
+                                <c:if test="${order.receptionDate != null}">
+                                    <td><spring:message code="receptionDate"/> : <fmt:formatDate pattern = "yyyy-MM-dd" value = "${order.receptionDate}" /></td>
+                                </c:if>
+                            </tr>
+                        </table>
+                        <c:if test="${order.promotion != null}">
+                            <p><spring:message code="promotion"/> : ${order.promotion.percent}% (${order.promotion.name})</p>
                         </c:if>
                     </div>
                 </c:forEach>

@@ -278,3 +278,21 @@ h3{
     color: red;
     text-align: right;
 }
+
+
+.order{
+    background-color: #fff9ed;
+    border-radius: 1vw;
+    margin: 2vw 4vw;
+    padding: 2vw;
+    text-align: center;
+}
+
+.order table{
+    margin: 1vw auto;
+    text-align: center;
+}
+.order table td{
+    padding-right: 2vw;
+    padding-left: 2vw;
+}
