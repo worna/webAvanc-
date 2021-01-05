@@ -2,14 +2,14 @@ DROP TABLE IF EXISTS [product_order];
 DROP TABLE IF EXISTS [product];
 DROP TABLE IF EXISTS [category_translation];
 DROP TABLE IF EXISTS [category];
-DROP TABLE IF EXISTS [order];
+DROP TABLE IF EXISTS [orders];
 DROP TABLE IF EXISTS [users];
 DROP TABLE IF EXISTS [promotion];
 
 CREATE TABLE [promotion] (
     id int IDENTITY(1, 1),
     [name] varchar(50) NOT NULL,
-    [percent] int NOT NULL,
+    reduction int NOT NULL,
     [start_date] date NOT NULL,
     end_date date NOT NULL,
 
@@ -93,7 +93,7 @@ CREATE TABLE [product_order] (
     order_id int NOT NULL,
 
     FOREIGN KEY (product_reference) REFERENCES [product](reference),
-    FOREIGN KEY (order_id) REFERENCES [order](id),
+    FOREIGN KEY (order_id) REFERENCES [orders](id),
 
     PRIMARY KEY (id)
 );
@@ -117,6 +117,12 @@ INSERT INTO product (reference, name, brand, price, quantity_left, is_salable, d
 (14353945, 'Triangle d''avertissement', 'K2', 6.14, 20, 1, 'Matériau du boîtier: Matière plastique</br>L''ensemble contient: Triangle d''avertissement</br>Couleur: rouge', '14353945.jpeg', 2),
 (15766502, 'Marteau d''urgence', 'CARCOMMERCE', 3.79, 0, 1, 'Couleur: orange</br>Longueur [cm]: 20</br>poids [g]: 300', '15766502.jpg', 2),
 (13636441, 'Gilet de sécurité', 'CARCOMMERCE', 2.83, 0, 0, 'Couleur: vert réséda</br>Quantité: 1</br>Taille: pour enfants', '13636441.jpeg', 2);
+
+INSERT INTO users (email, password, last_name, first_name, phone_number, gender, birth_date, street, city, postal_code, country, AUTHORITIES, NON_EXPIRED, NON_LOCKED, CREDENTIALS_NON_EXPIRED
+, ENABLED) VALUES 
+('test@test.be', '$2a$10$slbf0sJJxCvbOsPkkWUBwOyXYrczLtEk2OsFwbC152r20jjzhEmEC', 'User', 'Test', '+32420202020', 0, '2000-01-01', 'Chaussée de Test', 'CityTEST', '5000', 'Belgique', 'ROLE_USER', 1, 1, 1, 1),
+('admin@test.be', '$2a$10$slbf0sJJxCvbOsPkkWUBwOyXYrczLtEk2OsFwbC152r20jjzhEmEC', 'User', 'Admin', '+32420202020', 0, '2000-01-01', 'Chaussée de Test', 'CityTEST', '5000', 'Belgique', 'ROLE_ADMIN', 1, 1, 1, 1);
+
 
 
 
