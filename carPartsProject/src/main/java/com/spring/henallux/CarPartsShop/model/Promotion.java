@@ -5,11 +5,11 @@ import java.util.Date;
 public class Promotion {
     private int id;
     private String name;
-    private int percent;
+    private Integer percent;
     private Date startDate;
     private Date endDate;
 
-    public Promotion(int id, String name, int percent, Date startDate, Date endDate) {
+    public Promotion(Integer id, String name, Integer percent, Date startDate, Date endDate) {
         this.id = id;
         this.name = name;
         this.percent = percent;
@@ -20,11 +20,11 @@ public class Promotion {
     public Promotion() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -36,11 +36,11 @@ public class Promotion {
         this.name = name;
     }
 
-    public int getPercent() {
+    public Integer getPercent() {
         return percent;
     }
 
-    public void setPercent(int percent) {
+    public void setPercent(Integer percent) {
         this.percent = percent;
     }
 

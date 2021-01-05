@@ -59,7 +59,12 @@ public class ProviderConverter {
 
     }
     public Order orderEntityToOrderModel(OrderEntity orderEntity){
-        Order order = mapper.map(orderEntity, Order.class);
+        Order order = new Order();
+        order.setId(orderEntity.getId());
+        order.setDate(new java.util.Date(orderEntity.getDate().getTime()));
+        order.setPaymentDate(new java.util.Date(orderEntity.getPaymentDate().getTime()));
+        if(orderEntity.getReceptionDate() != null)
+            order.setReceptionDate(new java.util.Date(orderEntity.getReceptionDate().getTime()));
         if(orderEntity.getPromotionEntity() != null)
             order.setPromotion(promotionEntityToPromotionModel(orderEntity.getPromotionEntity()));
         order.setUser(userEntityToUserModel(orderEntity.getUserEntity()));
@@ -71,7 +76,12 @@ public class ProviderConverter {
         return productOrder;
     }
     public Promotion promotionEntityToPromotionModel(PromotionEntity promotionEntity){
-        Promotion promotion = mapper.map(promotionEntity, Promotion.class);
+        Promotion promotion = new Promotion();
+        promotion.setId(promotionEntity.getId());
+        promotion.setName(promotionEntity.getName());
+        promotion.setPercent(promotionEntity.getPercent());
+        promotion.setStartDate(new java.util.Date(promotionEntity.getStartDate().getTime()));
+        promotion.setEndDate(new java.util.Date(promotionEntity.getEndDate().getTime()));
         return promotion;
     }
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
