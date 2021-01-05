@@ -14,7 +14,7 @@ public class PromotionEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "percent")
+    @Column(name = "reduction")
     private Integer percent;
 
     @Column(name = "start_date")

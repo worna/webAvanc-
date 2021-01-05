@@ -9,14 +9,15 @@ import com.spring.henallux.CarPartsShop.dataAccess.repository.UserRepository;
 import com.spring.henallux.CarPartsShop.dataAccess.util.ProviderConverter;
 import com.spring.henallux.CarPartsShop.model.Order;
 import com.spring.henallux.CarPartsShop.model.Product;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 
 @Service
@@ -37,6 +38,15 @@ public class OrderDAO implements OrderDataAccess {
         this.productRepository = productRepository;
         this.providerConverter = providerConverter;
 
+    }
+
+    public List<Order> findByUser (HttpServletRequest request){
+        List<Order> orders = new ArrayList<>();
+        List<OrderEntity> orderEntities = orderRepository.findAllByUserEntity(userRepository.findByEmail(request.getUserPrincipal().getName()));
+        for(int i = 0; i < orderEntities.size(); i++){
+            orders.add(providerConverter.orderEntityToOrderModel(orderEntities.get(i)));
+        }
+        return orders;
     }
 
     public Order findById (int id){
