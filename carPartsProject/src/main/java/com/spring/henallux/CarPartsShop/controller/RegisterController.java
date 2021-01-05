@@ -20,15 +20,20 @@ public class RegisterController {
     private UserDAO userDAO;
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model){
-        model.addAttribute("title","CarParts - Register");
+        model.addAttribute("title","CarParts");
         model.addAttribute("userForm",new User());
         return "integrated:register";
     }
     @RequestMapping (value="/send", method = RequestMethod.POST)
     public String getFormData (Model model, @Valid @ModelAttribute(value = "userForm")User inscriptionForm, final BindingResult errors){
         if(!errors.hasErrors()){
-            userDAO.addUser(inscriptionForm);
-            return "redirect:/";
+            try {
+                userDAO.addUser(inscriptionForm);
+                return "redirect:/";
+            } catch (Exception e){
+                model.addAttribute("userAlreadyExist",true);
+                return "integrated:register";
+            }
         } else {
             return "integrated:register";
         }

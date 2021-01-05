@@ -13,6 +13,9 @@
 </head>
 <body>
 <div class="authentication">
+    <c:if test="${userAlreadyExist}">
+        <p class="errors"><spring:message code="userAlreadyExist"/></p>
+    </c:if>
     <form:form id="userRegister"
                method="POST"
                action="/register/send"

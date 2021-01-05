@@ -30,15 +30,19 @@ public class UserDAO implements UserDataAccess {
         User user = providerConverter.userEntityToUserModel(userEntity);
         return user;
     }
-    public void addUser(User user){
-        user.setAccountNonExpired(true);
-        user.setAccountNonLocked(true);
-        user.setEnabled(true);
-        user.setCredentialsNonExpired(true);
-        user.setAuthorities("ROLE_USER");
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        UserEntity userEntity = providerConverter.userModelToUserEntity(user);
-        userRepository.save(userEntity);
+    public void addUser(User user) throws Exception{
+        if(findByEmail(user.getEmail()) == null){
+            user.setAccountNonExpired(true);
+            user.setAccountNonLocked(true);
+            user.setEnabled(true);
+            user.setCredentialsNonExpired(true);
+            user.setAuthorities("ROLE_USER");
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            UserEntity userEntity = providerConverter.userModelToUserEntity(user);
+            userRepository.save(userEntity);
+        } else {
+            throw new Exception("User already exist");
+        }
     }
 }
