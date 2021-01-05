@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 
-@Entity(name="\"order\"")
+@Entity(name="orders")
 public class OrderEntity {
 
     @Id

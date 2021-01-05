@@ -9,6 +9,7 @@ import com.spring.henallux.CarPartsShop.dataAccess.repository.UserRepository;
 import com.spring.henallux.CarPartsShop.dataAccess.util.ProviderConverter;
 import com.spring.henallux.CarPartsShop.model.Order;
 import com.spring.henallux.CarPartsShop.model.Product;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,10 +41,11 @@ public class OrderDAO implements OrderDataAccess {
 
     public Order findById (int id){
         OrderEntity orderEntity = orderRepository.findById(id);
+        if(orderEntity == null) return null;
         Order order = providerConverter.orderEntityToOrderModel(orderEntity);
         return order;
     }
-    public void addOrder(HashMap<Product, Integer> productsInCart, HttpServletRequest request){
+    public OrderEntity addOrder(HashMap<Product, Integer> productsInCart, HttpServletRequest request){
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         orderEntity.setPaymentDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
@@ -51,7 +53,7 @@ public class OrderDAO implements OrderDataAccess {
         //recuperer la promo
         orderEntity.setPromotionEntity(null);
         orderEntity.setUserEntity(userRepository.findByEmail(request.getUserPrincipal().getName()));
-        orderRepository.save(orderEntity);
+        OrderEntity savedOrder = orderRepository.save(orderEntity);
         productsInCart.forEach((product, quantity) -> {
             ProductOrderEntity productOrderEntity = new ProductOrderEntity();
             productOrderEntity.setQuantity(quantity);
@@ -61,5 +63,6 @@ public class OrderDAO implements OrderDataAccess {
             productOrderEntity.setQuantity(quantity);
             productOrderRepository.save(productOrderEntity);
         });
+        return savedOrder;
     }
 }

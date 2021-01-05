@@ -85,8 +85,9 @@ h3{
 #rightPart > *{
     display: inline-block;
 }
-#authentication{
-    margin-right: 1vw;
+#rightPart span {
+    margin-right: 4px;
+    margin-left: 4px;
 }
 #banniere a:link, #banniere a:visited, #footer a:link, #footer a:visited{
     text-decoration: none;
@@ -94,9 +95,6 @@ h3{
 }
 #banniere a:hover, #footer a:hover{
     color: #ec8405;
-}
-#cart{
-    margin-left: 1vw;
 }
 #cart:hover{
     color: #ec8405;

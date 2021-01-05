@@ -60,7 +60,8 @@ public class ProviderConverter {
     }
     public Order orderEntityToOrderModel(OrderEntity orderEntity){
         Order order = mapper.map(orderEntity, Order.class);
-        order.setPromotion(promotionEntityToPromotionModel(orderEntity.getPromotionEntity()));
+        if(orderEntity.getPromotionEntity() != null)
+            order.setPromotion(promotionEntityToPromotionModel(orderEntity.getPromotionEntity()));
         order.setUser(userEntityToUserModel(orderEntity.getUserEntity()));
         return order;
     }

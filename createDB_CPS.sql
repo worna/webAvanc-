@@ -38,7 +38,7 @@ CREATE TABLE [users] (
     PRIMARY KEY (email) 
 );
 
-CREATE TABLE [order] (
+CREATE TABLE [orders] (
     id int IDENTITY(1, 1),
     [date] date NOT NULL,
     payment_date date,
@@ -101,20 +101,22 @@ CREATE TABLE [product_order] (
 
 
 INSERT INTO category (image) VALUES 
-('entretien_exterieur.jpg'),
-('security.jpg');
+('accessory.png'),
+('security.png');
 
 INSERT INTO category_translation (category_name, language_name, category_id) VALUES 
-('Exterior maintenance', 'en', 1),
-('Entretien extérieur', 'fr', 1),
+('Exterior accessory', 'en', 1),
+('Accessoires extérieurs', 'fr', 1),
 ('Security','en',2),
 ('Sécurité et panne', 'fr', 2);
 
 
 INSERT INTO product (reference, name, brand, price, quantity_left, is_salable, description, image, product_category) VALUES 
-(7316, 'Lave-glace hiver', 'Auto M&M', 4.60, 10, 1, 'Lave-glace résistant aux températures hivernales</br> - Jusqu''à -30 dégrés !', '7316.jpg', 1);
-
-
+(13657432, 'EuroRide 2 Porte-vélo, porte-bagages arrière', 'Thule', 363.87, 10, 1, 'Nombre de vélos: 2</br>Capacité de charge [kg]: 36</br>Poids max. de vélo(s) [kg]: 20', '13657432.jpeg', 1),
+(13645022, 'Extincteur de feu', 'OGNIOCHRON', 12.04, 4, 1, 'Poids [kg]: 1,5</br>Groupe:B, C</br>Couleur du carter: rouge', '13645022.jpg', 2),
+(14353945, 'Triangle d''avertissement', 'K2', 6.14, 20, 1, 'Matériau du boîtier: Matière plastique</br>L''ensemble contient: Triangle d''avertissement</br>Couleur: rouge', '14353945.jpeg', 2),
+(15766502, 'Marteau d''urgence', 'CARCOMMERCE', 3.79, 0, 1, 'Couleur: orange</br>Longueur [cm]: 20</br>poids [g]: 300', '15766502.jpg', 2),
+(13636441, 'Gilet de sécurité', 'CARCOMMERCE', 2.83, 0, 0, 'Couleur: vert réséda</br>Quantité: 1</br>Taille: pour enfants', '13636441.jpeg', 2);
 
 
 

@@ -1,16 +1,5 @@
 package com.spring.henallux.CarPartsShop.model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import static org.springframework.util.StringUtils.isEmpty;
-
 public class Product {
     private int id;
     private String name;

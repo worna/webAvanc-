@@ -24,7 +24,7 @@
                         method="post"
                         action="/product/${Product.id}/addToCart"
                         modelAttribute="productToCart">
-                            <form:input path="quantity" type="number" min="1" max="${Product.quantityLeft}"/>
+                            <form:input path="quantity" placeholder="1" value="1" type="number" min="1" max="${Product.quantityLeft}"/>
                             <form:label path="quantity" class="label">
                                 <spring:message code="quantity"/> :
                             </form:label>

@@ -21,7 +21,7 @@
                                 method="post"
                                 action="/cart/modifyQuantity/${product.key.id}"
                                 modelAttribute="productToCart">
-                            <form:input path="quantity" type="number" min="0" max="${product.key.quantityLeft}"/>
+                            <form:input path="quantity" placeholder="1" value="1" type="number" min="0" max="${product.key.quantityLeft}"/>
                             <form:label path="quantity" class="label">
                                 <spring:message code="quantity"/> :
                             </form:label>
@@ -31,7 +31,14 @@
                         </form:form>
                     </div>
                 </c:forEach>
-                <a href="<spring:url value="/buy"/>"  onclick="return confirm('<spring:message code="confirmPayment"/>');"><spring:message code="buy"/></a>
+                <form:form
+                        method="post"
+                        action="/cart/confirmCart"
+                        modelAttribute="productToCart">
+                    <form:button onclick="return confirm('<spring:message code=\"confirmPayment\"/>');">
+                        <spring:message code="buy"/>
+                    </form:button>
+                </form:form>
             </c:otherwise>
         </c:choose>
     </body>
