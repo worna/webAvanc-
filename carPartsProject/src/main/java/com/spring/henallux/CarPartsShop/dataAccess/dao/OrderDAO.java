@@ -51,7 +51,6 @@ public class OrderDAO implements OrderDataAccess {
         //recuperer la promo
         orderEntity.setPromotionEntity(null);
         orderEntity.setUserEntity(userRepository.findByEmail(request.getUserPrincipal().getName()));
-        System.out.println(orderEntity.getDate()+"|"+orderEntity.getReceptionDate());
         orderRepository.save(orderEntity);
         productsInCart.forEach((product, quantity) -> {
             ProductOrderEntity productOrderEntity = new ProductOrderEntity();
@@ -62,6 +61,5 @@ public class OrderDAO implements OrderDataAccess {
             productOrderEntity.setQuantity(quantity);
             productOrderRepository.save(productOrderEntity);
         });
-
     }
 }
