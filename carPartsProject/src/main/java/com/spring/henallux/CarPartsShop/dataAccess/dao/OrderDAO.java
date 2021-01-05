@@ -55,6 +55,8 @@ public class OrderDAO implements OrderDataAccess {
         orderRepository.save(orderEntity);
         productsInCart.forEach((product, quantity) -> {
             ProductOrderEntity productOrderEntity = new ProductOrderEntity();
+            productOrderEntity.setQuantity(quantity);
+            productOrderEntity.setUnitPrice(product.getPrice());
             productOrderEntity.setOrderEntity(orderEntity);
             productOrderEntity.setProductEntity(productRepository.findById(product.getId()));
             productOrderEntity.setQuantity(quantity);

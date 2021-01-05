@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 
-@Entity(name="order")
+@Entity(name="\"order\"")
 public class OrderEntity {
 
     @Id
@@ -22,12 +22,12 @@ public class OrderEntity {
     @Column(name = "reception_date")
     private java.sql.Date receptionDate;
 
-    @JoinColumn(name = "user_email", referencedColumnName = "email")
-    @ManyToOne
+    @JoinColumn(name = "user_email")
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity userEntity;
 
-    @JoinColumn(name = "promotion_id", referencedColumnName = "id")
-    @ManyToOne
+    @JoinColumn(name = "promotion_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private PromotionEntity promotionEntity;
 
 
