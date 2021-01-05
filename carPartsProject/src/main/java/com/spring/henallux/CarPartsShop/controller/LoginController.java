@@ -19,7 +19,7 @@ public class LoginController {
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model, Authentication auth, @RequestParam(value = "error", required = false) String error){
         if(auth == null) {
-            model.addAttribute("title", "Login");
+            model.addAttribute("title","Car parts shop");
             model.addAttribute("userDetails", new User());
             if(error != null) {
                 model.addAttribute("errorMessage", error);

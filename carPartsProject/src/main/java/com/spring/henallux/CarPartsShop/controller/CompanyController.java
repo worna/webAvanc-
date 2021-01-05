@@ -12,7 +12,7 @@ public class CompanyController {
 
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model){
-        model.addAttribute("title","Car parts");
+        model.addAttribute("title","Car parts shop");
         return "integrated:company";
     }
     

@@ -17,7 +17,7 @@ public class AdminController {
 
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model){
-        model.addAttribute("title","Admin");
+        model.addAttribute("title","Car parts shop");
         return "integrated:admin";
     }
     

@@ -39,7 +39,7 @@ public class CartController {
     public String home(Model model, HttpServletRequest request) {
         HashMap<Product, Integer> products = ShoppingCart.getShoppingCart(request);
 
-        model.addAttribute("title", "Car parts - Cart");
+        model.addAttribute("title","Car parts shop");
         model.addAttribute("productToCart", new ProductToCart());
         model.addAttribute("products", products);
         return "integrated:cart";

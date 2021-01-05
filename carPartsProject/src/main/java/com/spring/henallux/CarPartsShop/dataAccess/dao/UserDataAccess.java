@@ -5,5 +5,5 @@ import com.spring.henallux.CarPartsShop.model.User;
 
 public interface UserDataAccess {
     User findByEmail (String email);
-    void addUser(User user);
+    void addUser(User user) throws Exception;
 }
