@@ -32,7 +32,7 @@ public class CategoryController {
         model.addAttribute("CategoryName", categoryTranslation.getName());
         model.addAttribute("CategoryId", id);
         model.addAttribute("Products", productResult);
-        model.addAttribute("title","Car parts - "+categoryTranslation.getName());
+        model.addAttribute("title","Car parts shop");
         return "integrated:category";
     }
     

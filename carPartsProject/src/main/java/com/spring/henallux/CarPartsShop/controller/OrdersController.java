@@ -47,7 +47,7 @@ public class OrdersController {
         }
 
         model.addAttribute("orders", orders);
-        model.addAttribute("title","Car parts");
+        model.addAttribute("title","Car parts shop");
         
         return "integrated:orders";
     }

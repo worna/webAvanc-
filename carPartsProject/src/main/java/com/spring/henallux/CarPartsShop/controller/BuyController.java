@@ -44,7 +44,7 @@ public class BuyController {
 
         ArrayList<ProductOrder> productOrders = productOrderDAO.findByOrderId(order.getId());
 
-        model.addAttribute("title", "Car parts - Buy");
+        model.addAttribute("title","Car parts shop");
         model.addAttribute("orderId", order.getId());
         model.addAttribute("products", productOrders);
 

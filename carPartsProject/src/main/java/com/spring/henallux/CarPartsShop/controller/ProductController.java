@@ -38,7 +38,7 @@ public class ProductController {
         CategoryTranslation categoryTranslation = categoryTranslationDAO.findByCategoryIdAndLanguageName(result.getCategory().getCategoryId(),locale.getLanguage());
         model.addAttribute("Product", result);
         model.addAttribute("CategoryTranslation", categoryTranslation);
-        model.addAttribute("title","Car parts - " + result.getName());
+        model.addAttribute("title","Car parts shop");
         model.addAttribute("productToCart", new ProductToCart());
         return "integrated:product";
     }

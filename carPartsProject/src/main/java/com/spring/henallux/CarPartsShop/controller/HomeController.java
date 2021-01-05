@@ -40,7 +40,7 @@ public class HomeController {
         }
         model.addAttribute("Categories", categories);
         model.addAttribute("CategoriesNames", categoriesNames);
-        model.addAttribute("title","Car parts");
+        model.addAttribute("title","Car parts shop");
         return "integrated:home";
     }
     

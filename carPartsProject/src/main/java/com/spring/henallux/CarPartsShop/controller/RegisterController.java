@@ -20,7 +20,7 @@ public class RegisterController {
     private UserDAO userDAO;
     @RequestMapping ( method = RequestMethod.GET)
     public String home (Model model){
-        model.addAttribute("title","CarParts");
+        model.addAttribute("title","Car parts shop");
         model.addAttribute("userForm",new User());
         return "integrated:register";
     }
