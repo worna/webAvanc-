@@ -47,7 +47,7 @@ public class BuyController {
             productsInCart.forEach((product, quantity) -> {
                 productDAO.updateProduct(product.getId(), quantity);
             });
-            orderDAO.addOrder(productsInCart);
+            orderDAO.addOrder(productsInCart,request);
             ShoppingCart.clearCart(request);
             model.addAttribute("title", "Car parts - Buy");
             model.addAttribute("products", productsInCart);

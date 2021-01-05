@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -28,9 +29,9 @@ public class PromotionDAO implements PromotionDataAccess {
 
     }
 
-    public List<Promotion> findTodaysPromotions (){
+    public List<Promotion> findTodayPromotions (){
         List<Promotion> promotions = new ArrayList<Promotion>();
-        List<PromotionEntity> promotionEntities = promotionRepository.findTodaysPromotions();
+        List<PromotionEntity> promotionEntities = promotionRepository.findTodayPromotions(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         for(int i = 0; i < promotionEntities.size(); i++){
             promotions.add(providerConverter.promotionEntityToPromotionModel(promotionEntities.get(i)));
         }

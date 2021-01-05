@@ -8,6 +8,8 @@ import java.sql.Date;
 public class ProductOrderEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
 

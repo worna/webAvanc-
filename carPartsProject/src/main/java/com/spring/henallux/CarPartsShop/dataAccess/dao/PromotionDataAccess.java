@@ -6,5 +6,5 @@ import com.spring.henallux.CarPartsShop.model.Promotion;
 import java.util.List;
 
 public interface PromotionDataAccess {
-    List<Promotion> findTodaysPromotions();
+    List<Promotion> findTodayPromotions();
 }
