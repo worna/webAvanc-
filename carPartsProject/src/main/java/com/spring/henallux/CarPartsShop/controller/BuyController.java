@@ -1,5 +1,6 @@
 package com.spring.henallux.CarPartsShop.controller;
 
+import com.spring.henallux.CarPartsShop.dataAccess.dao.OrderDAO;
 import com.spring.henallux.CarPartsShop.dataAccess.dao.ProductDAO;
 import com.spring.henallux.CarPartsShop.model.Product;
 import com.spring.henallux.CarPartsShop.model.ProductInCart;
@@ -21,12 +22,14 @@ import java.util.HashMap;
 @SessionAttributes({Constants.SESSION_CART})
 public class BuyController {
 
+    private OrderDAO orderDAO;
     private ProductDAO productDAO;
     private boolean validCart;
 
     @Autowired
-    public BuyController(ProductDAO productDAO){
+    public BuyController(ProductDAO productDAO, OrderDAO orderDAO){
         this.productDAO = productDAO;
+        this.orderDAO = orderDAO;
     }
 
     @RequestMapping (method = RequestMethod.GET)
@@ -44,7 +47,7 @@ public class BuyController {
             productsInCart.forEach((product, quantity) -> {
                 productDAO.updateProduct(product.getId(), quantity);
             });
-
+            orderDAO.addOrder(productsInCart);
             ShoppingCart.clearCart(request);
             model.addAttribute("title", "Car parts - Buy");
             model.addAttribute("products", productsInCart);

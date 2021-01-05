@@ -27,12 +27,9 @@ public class RegisterController {
     @RequestMapping (value="/send", method = RequestMethod.POST)
     public String getFormData (Model model, @Valid @ModelAttribute(value = "userForm")User inscriptionForm, final BindingResult errors){
         if(!errors.hasErrors()){
-            String welcomeMessage = "welcome," + inscriptionForm.getEmail()+"!";
             userDAO.addUser(inscriptionForm);
-            System.out.println(welcomeMessage);
             return "redirect:/";
         } else {
-            System.out.println(errors.getModel());
             return "integrated:register";
         }
     }

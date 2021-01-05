@@ -1,10 +1,7 @@
 package com.spring.henallux.CarPartsShop.dataAccess.util;
 
-import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryEntity;
-import com.spring.henallux.CarPartsShop.dataAccess.entity.CategoryTranslationEntity;
-import com.spring.henallux.CarPartsShop.dataAccess.entity.ProductEntity;
-import com.spring.henallux.CarPartsShop.dataAccess.entity.UserEntity;
 import com.spring.henallux.CarPartsShop.model.*;
+import com.spring.henallux.CarPartsShop.dataAccess.entity.*;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Component;
@@ -60,6 +57,21 @@ public class ProviderConverter {
         product.setSalable(productEntity.isSalable());
         return product;
 
+    }
+    public Order orderEntityToOrderModel(OrderEntity orderEntity){
+        Order order = mapper.map(orderEntity, Order.class);
+        order.setPromotion(promotionEntityToPromotionModel(orderEntity.getPromotionEntity()));
+        order.setUser(userEntityToUserModel(orderEntity.getUserEntity()));
+        return order;
+    }
+    public ProductOrder productOrderEntityToProductOrderModel(ProductOrderEntity productOrderEntity){
+        ProductOrder productOrder = mapper.map(productOrderEntity, ProductOrder.class);
+        productOrder.setOrder(orderEntityToOrderModel(productOrderEntity.getOrderEntity()));
+        return productOrder;
+    }
+    public Promotion promotionEntityToPromotionModel(PromotionEntity promotionEntity){
+        Promotion promotion = mapper.map(promotionEntity, Promotion.class);
+        return promotion;
     }
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
         Category category = mapper.map(categoryEntity, Category.class);
