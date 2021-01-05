@@ -5,11 +5,11 @@ import java.util.Date;
 public class ProductOrder {
     private int id;
     private int  quantity;
-    private int unitPrice;
+    private double unitPrice;
     private Product product;
     private Order order;
 
-    public ProductOrder(int id, int quantity, int unitPrice, Product product, Order order) {
+    public ProductOrder(int id, int quantity, double unitPrice, Product product, Order order) {
         this.id = id;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
@@ -36,11 +36,11 @@ public class ProductOrder {
         this.quantity = quantity;
     }
 
-    public int getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 

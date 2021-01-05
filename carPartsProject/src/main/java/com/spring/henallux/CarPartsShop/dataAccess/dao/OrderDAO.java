@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -58,7 +59,7 @@ public class OrderDAO implements OrderDataAccess {
     public OrderEntity addOrder(HashMap<Product, Integer> productsInCart, HttpServletRequest request){
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        orderEntity.setPaymentDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        orderEntity.setPaymentDate(null);
         orderEntity.setReceptionDate(null);
         //recuperer la promo
         orderEntity.setPromotionEntity(null);
@@ -74,5 +75,11 @@ public class OrderDAO implements OrderDataAccess {
             productOrderRepository.save(productOrderEntity);
         });
         return savedOrder;
+    }
+
+    public void updateDate(Order order){
+        OrderEntity orderEntity = orderRepository.findById(order.getId());
+        orderEntity.setPaymentDate(new Date(order.getPaymentDate().getTime()));
+        orderRepository.save(orderEntity);
     }
 }

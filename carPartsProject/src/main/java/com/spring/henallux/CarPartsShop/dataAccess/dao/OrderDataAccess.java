@@ -10,4 +10,7 @@ import java.util.List;
 public interface OrderDataAccess {
     Order findById(int id);
     List<Order> findByUser (HttpServletRequest request);
+
+    void updateDate(Order order);
+
 }

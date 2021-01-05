@@ -62,7 +62,8 @@ public class ProviderConverter {
         Order order = new Order();
         order.setId(orderEntity.getId());
         order.setDate(new java.util.Date(orderEntity.getDate().getTime()));
-        order.setPaymentDate(new java.util.Date(orderEntity.getPaymentDate().getTime()));
+        if(orderEntity.getPaymentDate() != null)
+            order.setPaymentDate(new java.util.Date(orderEntity.getPaymentDate().getTime()));
         if(orderEntity.getReceptionDate() != null)
             order.setReceptionDate(new java.util.Date(orderEntity.getReceptionDate().getTime()));
         if(orderEntity.getPromotionEntity() != null)
@@ -72,6 +73,7 @@ public class ProviderConverter {
     }
     public ProductOrder productOrderEntityToProductOrderModel(ProductOrderEntity productOrderEntity){
         ProductOrder productOrder = mapper.map(productOrderEntity, ProductOrder.class);
+        productOrder.setProduct(productEntityToProductModel(productOrderEntity.getProductEntity()));
         productOrder.setOrder(orderEntityToOrderModel(productOrderEntity.getOrderEntity()));
         return productOrder;
     }

@@ -20,9 +20,9 @@
     <input type="hidden" name="cert_id" value="AcumLlDnDDuYwPGDt5yD-R47PzBr6XxBocA_O3mR_13Z2sN6FA9TDq4Nn8gEF5YvfFlQz_Gx8BDBYdeB">
 
     <c:forEach items="${products}" var="product" varStatus="loop">
-        <input type="hidden" name="item_name_${loop.index+1}" value="${product.key.name}">
-        <input type="hidden" name="amount_${loop.index+1}" value="${product.key.price}">
-        <input type="hidden" name="quantity_${loop.index+1}" value="${product.value}">
+        <input type="hidden" name="item_name_${loop.index+1}" value="${product.product.name}">
+        <input type="hidden" name="amount_${loop.index+1}" value="${product.unitPrice}">
+        <input type="hidden" name="quantity_${loop.index+1}" value="${product.quantity}">
     </c:forEach>
 
     <input type="hidden" name="shipping_1" value="5" />
@@ -39,7 +39,7 @@
     <input type="hidden" name="zip" value="${pageContext.request.userPrincipal.principal.postalCode}">
     <input type="hidden" name="country" value="BE">
     <input type='hidden' name='cancel_return' value='http://localhost:8082/cart'>
-    <input type='hidden' name='return' value='http://localhost:8082/'>
+    <input type='hidden' name='return' value='http://localhost:8082/buy/${orderId}/success'>
     <input type="image" name="submit"
            src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppcredit-logo-small.png"
            alt="PayPal - The safer, easier way to pay online">
