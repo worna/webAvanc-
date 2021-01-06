@@ -26,15 +26,15 @@ public class PromotionDAO implements PromotionDataAccess {
     public PromotionDAO(PromotionRepository promotionRepository, ProviderConverter providerConverter) {
         this.promotionRepository = promotionRepository;
         this.providerConverter = providerConverter;
-
     }
 
     public List<Promotion> findTodayPromotions (){
-        List<Promotion> promotions = new ArrayList<Promotion>();
+        List<Promotion> promotions = new ArrayList<>();
         List<PromotionEntity> promotionEntities = promotionRepository.findTodayPromotions(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-        for(int i = 0; i < promotionEntities.size(); i++){
-            promotions.add(providerConverter.promotionEntityToPromotionModel(promotionEntities.get(i)));
+        for(PromotionEntity promotionEntity : promotionEntities){
+            promotions.add(providerConverter.promotionEntityToPromotionModel(promotionEntity));
         }
+
         return promotions;
     }
 }

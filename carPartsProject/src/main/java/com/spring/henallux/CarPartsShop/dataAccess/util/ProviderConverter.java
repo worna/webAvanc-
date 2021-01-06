@@ -6,6 +6,8 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class ProviderConverter {
 
@@ -86,6 +88,17 @@ public class ProviderConverter {
         promotion.setEndDate(new java.util.Date(promotionEntity.getEndDate().getTime()));
         return promotion;
     }
+
+    public PromotionEntity promotionModelToPromotionEntity(Promotion promotion){
+        PromotionEntity promotionEntity = new PromotionEntity();
+        promotionEntity.setId(promotion.getId());
+        promotionEntity.setName(promotion.getName());
+        promotionEntity.setPercent(promotion.getPercent());
+        promotionEntity.setStartDate(new java.sql.Date(promotion.getStartDate().getTime()));
+        promotionEntity.setEndDate(new java.sql.Date(promotion.getEndDate().getTime()));
+        return promotionEntity;
+    }
+
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
         Category category = mapper.map(categoryEntity, Category.class);
         return category;

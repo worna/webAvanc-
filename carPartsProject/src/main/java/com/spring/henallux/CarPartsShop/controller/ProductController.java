@@ -32,7 +32,14 @@ public class ProductController {
 
     @RequestMapping ( method = RequestMethod.GET)
     public String home(Model model, @PathVariable String id, Locale locale){
-        Product result = productDAO.findById(Integer.parseInt(id));
+        int intId;
+        try {
+            intId = Integer.parseInt(id);
+        } catch(NumberFormatException e){
+            return "redirect:/404";
+        }
+
+        Product result = productDAO.findById(intId);
         if(result == null)
             return "redirect:/404";
         CategoryTranslation categoryTranslation = categoryTranslationDAO.findByCategoryIdAndLanguageName(result.getCategory().getCategoryId(),locale.getLanguage());

@@ -16,7 +16,14 @@
                     <div>
                         <h3><spring:message code="product"/> : ${product.key.name}</h3>
                         <p><spring:message code="quantity"/> : ${product.value}</p>
-                        <p><spring:message code="price"/> : ${product.key.price * product.value}</p>
+                        <c:choose>
+                            <c:when test="${promotion == null}">
+                                <p><spring:message code="price"/> : ${product.key.price * product.value}</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p><spring:message code="price"/> : <del>${String.format("%.2f", product.key.price * product.value)}€</del> ${String.format("%.2f", product.key.price * product.value * (1 - promotion/100))}€</p>
+                            </c:otherwise>
+                        </c:choose>
                         <form:form
                                 method="post"
                                 action="/cart/modifyQuantity/${product.key.id}"
@@ -35,7 +42,7 @@
                         method="post"
                         action="/cart/confirmCart"
                         modelAttribute="productToCart">
-                    <form:button onclick="return confirm('<spring:message code=\"confirmPayment\"/>');">
+                    <form:button onclick="return confirm('Do you really want to confirm this order ?');">
                         <spring:message code="buy"/>
                     </form:button>
                 </form:form>

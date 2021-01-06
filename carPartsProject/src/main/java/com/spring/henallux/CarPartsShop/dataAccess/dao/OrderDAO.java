@@ -2,13 +2,12 @@ package com.spring.henallux.CarPartsShop.dataAccess.dao;
 
 import com.spring.henallux.CarPartsShop.dataAccess.entity.OrderEntity;
 import com.spring.henallux.CarPartsShop.dataAccess.entity.ProductOrderEntity;
-import com.spring.henallux.CarPartsShop.dataAccess.repository.OrderRepository;
-import com.spring.henallux.CarPartsShop.dataAccess.repository.ProductOrderRepository;
-import com.spring.henallux.CarPartsShop.dataAccess.repository.ProductRepository;
-import com.spring.henallux.CarPartsShop.dataAccess.repository.UserRepository;
+import com.spring.henallux.CarPartsShop.dataAccess.repository.*;
 import com.spring.henallux.CarPartsShop.dataAccess.util.ProviderConverter;
 import com.spring.henallux.CarPartsShop.model.Order;
 import com.spring.henallux.CarPartsShop.model.Product;
+import com.spring.henallux.CarPartsShop.model.Promotion;
+import com.spring.henallux.CarPartsShop.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +37,11 @@ public class OrderDAO implements OrderDataAccess {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.providerConverter = providerConverter;
-
     }
 
     public List<Order> findByUser (HttpServletRequest request){
         List<Order> orders = new ArrayList<>();
-        List<OrderEntity> orderEntities = orderRepository.findAllByUserEntity(userRepository.findByEmail(request.getUserPrincipal().getName()));
+        List<OrderEntity> orderEntities = orderRepository.findAllByUserEntityOrderByIdDesc(userRepository.findByEmail(request.getUserPrincipal().getName()));
         for(int i = 0; i < orderEntities.size(); i++){
             orders.add(providerConverter.orderEntityToOrderModel(orderEntities.get(i)));
         }
@@ -56,19 +54,21 @@ public class OrderDAO implements OrderDataAccess {
         Order order = providerConverter.orderEntityToOrderModel(orderEntity);
         return order;
     }
-    public OrderEntity addOrder(HashMap<Product, Integer> productsInCart, HttpServletRequest request){
+    public OrderEntity addOrder(HashMap<Product, Integer> productsInCart, Promotion promotion, HttpServletRequest request){
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         orderEntity.setPaymentDate(null);
         orderEntity.setReceptionDate(null);
-        //recuperer la promo
-        orderEntity.setPromotionEntity(null);
+        if(promotion != null)
+            orderEntity.setPromotionEntity(providerConverter.promotionModelToPromotionEntity(promotion));
         orderEntity.setUserEntity(userRepository.findByEmail(request.getUserPrincipal().getName()));
         OrderEntity savedOrder = orderRepository.save(orderEntity);
         productsInCart.forEach((product, quantity) -> {
             ProductOrderEntity productOrderEntity = new ProductOrderEntity();
-            productOrderEntity.setQuantity(quantity);
-            productOrderEntity.setUnitPrice(product.getPrice());
+            if(promotion == null)
+                productOrderEntity.setUnitPrice(product.getPrice());
+            else
+                productOrderEntity.setUnitPrice(product.getPrice() * (1 - promotion.getPercent() / 100.0));
             productOrderEntity.setOrderEntity(orderEntity);
             productOrderEntity.setProductEntity(productRepository.findById(product.getId()));
             productOrderEntity.setQuantity(quantity);

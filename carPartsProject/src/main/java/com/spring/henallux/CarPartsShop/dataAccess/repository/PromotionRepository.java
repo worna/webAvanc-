@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface PromotionRepository extends JpaRepository<PromotionEntity,String>{
-    @Query(value = "select p from PromotionEntity p where p.start_date < ?1 and p.end_date > ?1", nativeQuery = true)
-    public List<PromotionEntity> findTodayPromotions(Date today);
+    @Query(value = "select * from promotion where start_date <= ?1 and end_date >= ?1", nativeQuery = true)
+    List<PromotionEntity> findTodayPromotions(Date today);
 
 }
 

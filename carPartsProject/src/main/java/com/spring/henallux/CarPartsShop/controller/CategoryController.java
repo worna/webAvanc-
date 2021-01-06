@@ -24,11 +24,17 @@ public class CategoryController {
 
     @RequestMapping ( method = RequestMethod.GET)
     public String home(Model model, @PathVariable String id, Locale locale){
-        CategoryTranslation categoryTranslation = categoryTranslationDAO.findByCategoryIdAndLanguageName(Integer.parseInt(id),locale.getLanguage());
+        int intId;
+        try {
+            intId = Integer.parseInt(id);
+        } catch(NumberFormatException e){
+            return "redirect:/404";
+        }
+        CategoryTranslation categoryTranslation = categoryTranslationDAO.findByCategoryIdAndLanguageName(intId,locale.getLanguage());
         if(categoryTranslation == null)
             return "redirect:/404";
 
-        List<Product> productResult = productDAO.findByCategoryEntity_CategoryId(Integer.parseInt(id));
+        List<Product> productResult = productDAO.findByCategoryEntity_CategoryId(intId);
         model.addAttribute("CategoryName", categoryTranslation.getName());
         model.addAttribute("CategoryId", id);
         model.addAttribute("Products", productResult);

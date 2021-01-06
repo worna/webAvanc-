@@ -6,6 +6,7 @@ import com.spring.henallux.CarPartsShop.dataAccess.dao.ProductDAO;
 import com.spring.henallux.CarPartsShop.dataAccess.dao.ProductOrderDAO;
 import com.spring.henallux.CarPartsShop.model.*;
 import com.spring.henallux.CarPartsShop.utils.ShoppingCart;
+import com.spring.henallux.CarPartsShop.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
